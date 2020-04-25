@@ -16,8 +16,6 @@ services:
     volumes:
       - data:/var/lib/unifi-video
       - video:/var/lib/unifi-video/videos
-    tmpfs:
-      - /var/cache/unifi-video
     environment:
       - TZ=Europe/Berlin
       - DEBUG=1
