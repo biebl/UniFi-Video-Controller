@@ -2,7 +2,6 @@ version: '3'
 services:
   unifi-video-controller:
     build: .
-    container_name: unifi-video-controller
     ports:
       - 1935:1935
       - 6666:6666
@@ -15,13 +14,14 @@ services:
       - 7446:7446
       - 7447:7447
     volumes:
-      - ./run/data:/var/lib/unifi-video
-      - ./run/videos:/var/lib/unifi-video/videos
+      - data:/var/lib/unifi-video
+      - video:/var/lib/unifi-video/videos
     tmpfs:
       - /var/cache/unifi-video
     environment:
-      - TZ=America/Los_Angeles
+      - TZ=Europe/Berlin
       - DEBUG=1
       - CREATE_TMPFS=no
-    cap_add:
-      - DAC_READ_SEARCH
+volumes:
+  data:
+  video:
